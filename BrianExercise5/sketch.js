@@ -184,8 +184,8 @@ function draw() {
     var dotS = 5;
     var dotL = 50;
     var points = map(mouseX, 0, width, dotS, dotL);
-    var locX = round(random(space.width));
-    var locY = round(random(space.height));
+    var locX = floor(random(space.width));
+    var locY = floor(random(space.height));
     var spacePic = space.get(locX, locY);
     fill(spacePic, 255);
     ellipse(locX, locY, points, points);
