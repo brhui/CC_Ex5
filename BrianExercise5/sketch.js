@@ -73,7 +73,7 @@ function draw() {
   }
 
   // Scene 2 - You are told you don't have control
-  
+
   if (count > 200) {
     image(door, 0, 0);
 
@@ -134,7 +134,7 @@ function draw() {
   }
 
   // Scene 3 - Reality is a LIE
-  
+
   if (count > 750) {
     background(space); // Not sure why this isn't filling as background??
     // image(space, 0,0)
@@ -162,10 +162,10 @@ function draw() {
     textAlign(CENTER, CENTER);
     text(phrase4.substring(mouseLeft, mouseRight + 1), width / 2, height / 2);
 
-    var move = 0.01;
-    var sinspeed = 0;
-    move = mouseX / width * 0.5;
-    sinspeed = (sinspeed + move) % TWO_PI;
+    /*    var move = 0.01;
+        var sinspeed = 0;
+        move = mouseX / width * 0.5;
+        sinspeed = (sinspeed + move) % TWO_PI; */
     image(mario, random(0, 100), mouseX);
     image(fern, mouseX / 2, random(100, 400));
     image(rings, mouseX / 3, random(0, 40));
@@ -173,12 +173,22 @@ function draw() {
     image(sun, random(300, 400), mouseX / 8);
   }
 
-  // Scene 5 - Fade to White
-  
+  // Scene 5 - Fade to White / Space picture points
+
   if (count > 1400) {
     ellipse(width / 2, 650, ellipWidth, ellipHeight);
     ellipWidth += ellipGrowth;
     ellipHeight += ellipGrowth;
+
+    space.loadPixels();
+    var dotS = 5;
+    var dotL = 50;
+    var points = map(mouseX, 0, width, dotS, dotL);
+    var locX = round(random(space.width));
+    var locY = round(random(space.height));
+    var spacePic = space.get(locX, locY);
+    fill(spacePic, 255);
+    ellipse(locX, locY, points, points);
   }
 
   // console.log('Count is: ' + count + '.');
